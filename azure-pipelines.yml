@@ -18,6 +18,7 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
+
 - task: TerraformCLI@0
   inputs:
     command: 'init'
@@ -27,3 +28,4 @@ steps:
   inputs:
     command: 'apply'
     allowTelemetryCollection: true
+
