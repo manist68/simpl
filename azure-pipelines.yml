@@ -14,7 +14,7 @@ steps:
   displayName: 'Run a one-line scrip t'
 
 - script: |
-    az login -u mani.tiwari@newgensoft.com -p qazmlp1234!
+    az login --service-principal -u 86076dbf-debc-44ba-b4f5-c90686150665 -p nh08Q~qnTpwwFOkQMp1klMK_dFHUVwVTWmF1pbtS --tenant 00bb5983-b28f-4542-a099-20eaf8bbb209
 
 
 - task: TerraformCLI@0
