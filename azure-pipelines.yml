@@ -9,12 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-stages:
-- stage: terraform 
-  pool: Default
-  jobs:
-  - job: codes
-    steps:
+steps:
      - task: TerraformTaskV4@4
        inputs:
         provider: 'azurerm'
