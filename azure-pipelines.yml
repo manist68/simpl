@@ -44,6 +44,6 @@ steps:
 
 - task: TerraformCLI@0
   inputs:
-    command: 'validate'
-    commandOptions: 'terraform init; terraform apply -auto-configure'
+    command: 'init'
+    commandOptions: 'apply'
     allowTelemetryCollection: true
