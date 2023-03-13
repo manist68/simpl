@@ -38,9 +38,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    backendServiceArm: 'ms3'
-    backendAzureRmResourceGroupName: 'nt-poc-akshaya'
-    backendAzureRmStorageAccountName: 'sinkstrgadf'
-    backendAzureRmContainerName: 'sink'
-    backendAzureRmKey: 'rg2/terraform.tfstate'
+    environmentServiceNameAzureRM: 'ms3'
+
+
 
