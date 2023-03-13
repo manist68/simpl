@@ -23,13 +23,12 @@ pool:
   vmImage: ubuntu-latest
 
 jobs:
-  - job: check_env
-    steps:
-      - task: PowerShell@2
-      - script: echo Hello, world!
+  # - job: check_env
+  #   steps:
+  #     - task: PowerShell@2
+  #     - script: echo Hello, world!
   
   - job: stage_login
-    dependsOn: check_env
     steps:
     
     - task: AzureCLI@2
@@ -41,4 +40,23 @@ jobs:
         inlineScript: |
           az --version
           az account show
+  
+  - job: terraform
+    steps:
+    
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'ms3'
+        backendAzureRmResourceGroupName: 'nt-poc-akshaya'
+        backendAzureRmStorageAccountName: 'sinkstrgadf'
+        backendAzureRmContainerName: 'sink'
+        backendAzureRmKey: 'rg/terraform.tfstate'
+        
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'apply'
+        environmentServiceNameAzureRM: 'ms3'
     
