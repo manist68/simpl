@@ -47,7 +47,7 @@ steps:
     targetType: 'inline'
     script: |
       az login -u 'mani.tiwari@newgensoft.com' -p 'qazmlp123$'
-            terraform init
+            terraform init -reconfigure
             terraform apply -auto-approve
          workingDirectory: '$(System.DefaultWorkingDirectory)'
 
