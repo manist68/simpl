@@ -10,7 +10,6 @@ stages:
             displayName: 'Run a one-line script'
            
       - job: stage_login
-        dependsOn: check_env_var
         steps:
           - task: AzureCLI@2
             displayName: Azure CLI
