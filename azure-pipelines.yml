@@ -22,16 +22,14 @@ steps:
     inlineScript: |
       az --version
       az account show
-
-- task: TerraformTaskV4@4
+- task: TerraformCLI@0
   inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'ms3'
-    backendAzureRmResourceGroupName: 'mss'
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'ms3'
-    backendAzureRmResourceGroupName: 'mss'
+    command: 'validate'
+    commandOptions: 'terraform init'
+    allowTelemetryCollection: true
+  
+  - task: TerraformCLI@0
+    inputs:
+      command: 'validate'
+      commandOptions: 'terraform apply -auto-approve'
+      allowTelemetryCollection: true
