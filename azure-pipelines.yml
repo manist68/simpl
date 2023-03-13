@@ -42,5 +42,5 @@ steps:
     backendAzureRmResourceGroupName: 'nt-poc-akshaya'
     backendAzureRmStorageAccountName: 'sinkstrgadf'
     backendAzureRmContainerName: 'sink'
-    backendAzureRmKey: 'rg/terraform.tfstate'
+    backendAzureRmKey: 'rg2/terraform.tfstate'
 
