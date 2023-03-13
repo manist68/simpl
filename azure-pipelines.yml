@@ -16,6 +16,11 @@
 #               inlineScript: |
 #                 az --version
 #                 az account show
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
 
 jobs:
   - job: check_env
