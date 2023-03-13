@@ -13,9 +13,15 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line scrip t'
 
-- script: |
-    az login --service-principal -u 86076dbf-debc-44ba-b4f5-c90686150665 -p nh08Q~qnTpwwFOkQMp1klMK_dFHUVwVTWmF1pbtS --tenant 00bb5983-b28f-4542-a099-20eaf8bbb209
-
+- task: AzureCLI@2
+  displayName: Azure CLI
+  inputs:
+    azureSubscription: ms1
+    scriptType: ps
+    scriptLocation: inlineScript
+    inlineScript: |
+      az --version
+      az account show
 
 - task: TerraformCLI@0
   inputs:
