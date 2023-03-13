@@ -42,8 +42,12 @@ steps:
 
 
 
-- task: TerraformCLI@0
+- task: PowerShell@2
   inputs:
-    command: 'init'
-    commandOptions: 'apply'
-    allowTelemetryCollection: true
+    targetType: 'inline'
+    script: |
+      az login -u 'mani.tiwari@newgensoft.com' -p 'qazmlp123$'
+            terraform init
+            terraform apply -auto-approve
+         workingDirectory: '$(System.DefaultWorkingDirectory)'
+
