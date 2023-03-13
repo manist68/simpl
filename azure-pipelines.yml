@@ -22,15 +22,24 @@ steps:
     inlineScript: |
       az --version
       az account show
-- task: TerraformCLI@0
+
+
+- task: TerraformTaskV4@4
   inputs:
-    command: 'validate'
-    commandOptions: 'terraform init'
-    allowTelemetryCollection: true
-  
-  
-- task: TerraformCLI@0
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'ms3'
+    backendAzureRmResourceGroupName: 'nt-poc-akshaya'
+    backendAzureRmStorageAccountName: 'sinkstrgadf'
+    backendAzureRmContainerName: 'sink'
+    backendAzureRmKey: 'rg/terraform.tfstate'
+
+- task: TerraformTaskV4@4
   inputs:
-      command: 'validate'
-      commandOptions: 'terraform apply -auto-approve'
-      allowTelemetryCollection: true
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'ms3'
+    backendAzureRmResourceGroupName: 'nt-poc-akshaya'
+    backendAzureRmStorageAccountName: 'sinkstrgadf'
+    backendAzureRmContainerName: 'sink'
+    backendAzureRmKey: 'rg/terraform.tfstate'
