@@ -16,7 +16,7 @@ steps:
 - task: AzureCLI@2
   displayName: Azure CLI
   inputs:
-    azureSubscription: ms2
+    azureSubscription: ms3
     scriptType: bash
    
 
