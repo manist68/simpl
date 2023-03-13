@@ -37,7 +37,7 @@ steps:
 - task: TerraformTaskV4@4
   inputs:
     provider: 'azurerm'
-    command: 'destroy'
+    command: 'destory'
     environmentServiceNameAzureRM: 'ms3'
 
 
