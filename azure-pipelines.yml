@@ -22,15 +22,16 @@ steps:
     inlineScript: |
       az --version
       az account show
-   
 
-- task: TerraformCLI@0
+- task: TerraformTaskV4@4
   inputs:
+    provider: 'azurerm'
     command: 'init'
-    allowTelemetryCollection: true
-
-- task: TerraformCLI@0
+    backendServiceArm: 'ms3'
+    backendAzureRmResourceGroupName: 'mss'
+- task: TerraformTaskV4@4
   inputs:
-    command: 'apply'
-    allowTelemetryCollection: true
-
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'ms3'
+    backendAzureRmResourceGroupName: 'mss'
