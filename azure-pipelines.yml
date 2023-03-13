@@ -3,13 +3,14 @@ stages:
     pool: Default
     jobs:  
       - job: check_env_var
-        dependsOn: clean_folder
+        # dependsOn: clean_folder
         steps:
           - task: PowerShell@2
           - script: echo Hello, world!
             displayName: 'Run a one-line script'
            
       - job: stage_login
+        dependsOn: check_env_var
         steps:
           - task: AzureCLI@2
             displayName: Azure CLI
