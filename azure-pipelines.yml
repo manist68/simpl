@@ -57,6 +57,6 @@ jobs:
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
-        command: 'apply'
+        command: 'destroy'
         environmentServiceNameAzureRM: 'ms3'
     
