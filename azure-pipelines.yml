@@ -9,45 +9,24 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line scrip t'
-
-- task: AzureCLI@2
-  displayName: Azure CLI
-  inputs:
-    azureSubscription: ms3
-    scriptType: bash
-    scriptLocation: inlineScript
-    inlineScript: |
-      az --version
-      az account show
-
-
-# - task: TerraformTaskV4@4
-#   inputs:
-#     provider: 'azurerm'
-#     command: 'init'
-#     backendServiceArm: 'ms3'
-#     backendAzureRmResourceGroupName: 'nt-poc-akshaya'
-#     backendAzureRmStorageAccountName: 'sinkstrgadf'
-#     backendAzureRmContainerName: 'sink'
-#     backendAzureRmKey: 'rg/terraform.tfstate'
-
-# - task: TerraformTaskV4@4
-#   inputs:
-#     provider: 'azurerm'
-#     command: 'destory'
-#     environmentServiceNameAzureRM: 'ms3'
-
-
-
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      az login -u 'mani.tiwari@newgensoft.com' -p 'qazmlp123$'
-            terraform init -reconfigure
-            terraform apply -auto-approve
-         workingDirectory: '$(System.DefaultWorkingDirectory)'
-
+stages:
+- stage: terraform 
+  pool: Default
+  jobs:
+  - job: codes
+    steps:
+     - task: TerraformTaskV4@4
+       inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'ms3'
+        backendAzureRmResourceGroupName: 'nt-poc-akshaya'
+        backendAzureRmStorageAccountName: 'sinkstrgadf'
+        backendAzureRmContainerName: 'sink'
+        backendAzureRmKey: 'rg/terraform.tfstate'
+        
+      - task: TerraformTaskV4@4
+        inputs:
+          provider: 'azurerm'
+          command: 'apply'
+          environmentServiceNameAzureRM: 'ms3'
