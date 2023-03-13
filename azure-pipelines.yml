@@ -24,21 +24,26 @@ steps:
       az account show
 
 
-- task: TerraformTaskV4@4
+# - task: TerraformTaskV4@4
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'init'
+#     backendServiceArm: 'ms3'
+#     backendAzureRmResourceGroupName: 'nt-poc-akshaya'
+#     backendAzureRmStorageAccountName: 'sinkstrgadf'
+#     backendAzureRmContainerName: 'sink'
+#     backendAzureRmKey: 'rg/terraform.tfstate'
+
+# - task: TerraformTaskV4@4
+#   inputs:
+#     provider: 'azurerm'
+#     command: 'destory'
+#     environmentServiceNameAzureRM: 'ms3'
+
+
+
+- task: TerraformCLI@0
   inputs:
-    provider: 'azurerm'
-    command: 'init'
-    backendServiceArm: 'ms3'
-    backendAzureRmResourceGroupName: 'nt-poc-akshaya'
-    backendAzureRmStorageAccountName: 'sinkstrgadf'
-    backendAzureRmContainerName: 'sink'
-    backendAzureRmKey: 'rg/terraform.tfstate'
-
-- task: TerraformTaskV4@4
-  inputs:
-    provider: 'azurerm'
-    command: 'destory'
-    environmentServiceNameAzureRM: 'ms3'
-
-
-
+    command: 'validate'
+    commandOptions: 'terraform init; terraform apply -auto-configure'
+    allowTelemetryCollection: true
